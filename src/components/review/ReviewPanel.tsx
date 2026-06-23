@@ -111,8 +111,11 @@ function ShippingThumb() {
     </div>
   );
 }
+interface ReviewPanelProps {
+  onSave?: () => void;
+}
 
-export function ReviewPanel() {
+export function ReviewPanel({ onSave }: ReviewPanelProps) {
   const { cart, incrementQuantity, decrementQuantity, saveSystem } =
     useBundleStore();
   const { total, compareAtTotal } = getCartTotal(cart, products);
@@ -286,7 +289,13 @@ export function ReviewPanel() {
           Checkout
         </button>
 
-        <button className={styles.saveLink} onClick={saveSystem}>
+        <button
+          className={styles.saveLink}
+          onClick={() => {
+            saveSystem();
+            onSave?.();
+          }}
+        >
           Save my system for later
         </button>
       </div>

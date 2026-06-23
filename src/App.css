@@ -15,9 +15,10 @@ body {
   background: #f4f5f8;
   color: #1a1a2e;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Two-column layout ── */
+/* ── Two-column desktop layout ── */
 .app-layout {
   display: grid;
   grid-template-columns: 1fr 360px;
@@ -32,44 +33,32 @@ body {
   min-width: 0;
 }
 
+/* Review panel sticks as you scroll */
 .review-col {
   position: sticky;
   top: 24px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* ── Review placeholder (until Step 4) ── */
-.review-placeholder {
-  background: #edf4ff;
-  border-radius: 10px;
-  padding: 20px 20px 31px;
-  min-height: 200px;
+.review-col::-webkit-scrollbar {
+  display: none;
 }
 
-.review-placeholder p:first-child {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 1.6px;
-  color: #484848;
-  text-transform: uppercase;
-  margin: 0 0 10px;
+/* ── Tablet (≤1024px) — narrow the review column ── */
+@media (max-width: 1024px) {
+  .app-layout {
+    grid-template-columns: 1fr 300px;
+    gap: 16px;
+    padding: 24px 16px;
+  }
 }
 
-.review-placeholder h2 {
-  margin: 0 0 6px;
-  font-size: 22px;
-  font-weight: 700;
-  color: #1f1f1f;
-  letter-spacing: 0.6px;
-}
-
-.review-placeholder p:last-child {
-  color: rgba(31, 31, 31, 0.75);
-  font-size: 12px;
-  margin: 0;
-}
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
+/* ── Mobile (≤860px) — single column, review stacks below ── */
+@media (max-width: 860px) {
   .app-layout {
     grid-template-columns: 1fr;
     padding: 16px;
@@ -78,5 +67,15 @@ body {
 
   .review-col {
     position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+
+/* ── Small mobile (≤480px) ── */
+@media (max-width: 480px) {
+  .app-layout {
+    padding: 12px;
+    gap: 12px;
   }
 }

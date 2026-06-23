@@ -1,27 +1,28 @@
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import type { CartMap, CartEntry, ActiveVariantMap } from '../types';
-import data from '../data/products.json';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { CartMap, CartEntry, ActiveVariantMap } from "../types";
+import data from "../data/products.json";
 
 interface BundleState {
-  // ── Accordion ────────────────────────────────────────────────────────────
   activeStep: number;
   setActiveStep: (step: number) => void;
 
-  // ── Cart ─────────────────────────────────────────────────────────────────
   cart: CartMap;
-  setQuantity: (productId: string, variantId: string | undefined, quantity: number) => void;
+  setQuantity: (
+    productId: string,
+    variantId: string | undefined,
+    quantity: number,
+  ) => void;
   incrementQuantity: (productId: string, variantId: string | undefined) => void;
   decrementQuantity: (productId: string, variantId: string | undefined) => void;
 
-  // ── Active variant per card ───────────────────────────────────────────────
   activeVariants: ActiveVariantMap;
   setActiveVariant: (productId: string, variantId: string) => void;
 
-  // ── Persistence helpers ───────────────────────────────────────────────────
-  savedSystem: CartMap | null;
+  // ── "Save my system for later" ────────────────────────────────────────────
+  savedSystem: { cart: CartMap; activeVariants: ActiveVariantMap } | null;
   saveSystem: () => void;
-  loadSavedSystem: () => void;
+  hasSavedSystem: () => boolean;
 }
 
 function cartKey(productId: string, variantId?: string): string {
@@ -31,11 +32,11 @@ function cartKey(productId: string, variantId?: string): string {
 export const useBundleStore = create<BundleState>()(
   persist(
     (set, get) => ({
-      // ── Accordion ──────────────────────────────────────────────────────
+      // ── Accordion ──────────────────────────────────────────────────────────
       activeStep: 1,
       setActiveStep: (step) => set({ activeStep: step }),
 
-      // ── Cart (seeded from JSON) ────────────────────────────────────────
+      // ── Cart ───────────────────────────────────────────────────────────────
       cart: data.initialCart as CartMap,
 
       setQuantity: (productId, variantId, quantity) => {
@@ -77,7 +78,7 @@ export const useBundleStore = create<BundleState>()(
         });
       },
 
-      // ── Active variants (seeded from JSON) ────────────────────────────
+      // ── Active variants ────────────────────────────────────────────────────
       activeVariants: data.initialActiveVariants as ActiveVariantMap,
 
       setActiveVariant: (productId, variantId) =>
@@ -85,58 +86,72 @@ export const useBundleStore = create<BundleState>()(
           activeVariants: { ...state.activeVariants, [productId]: variantId },
         })),
 
-      // ── Persistence ───────────────────────────────────────────────────
+      // ── Save my system for later ───────────────────────────────────────────
       savedSystem: null,
 
       saveSystem: () => {
-        const { cart } = get();
-        set({ savedSystem: cart });
+        const { cart, activeVariants } = get();
+        set({
+          savedSystem: {
+            cart: { ...cart },
+            activeVariants: { ...activeVariants },
+          },
+        });
       },
 
-      loadSavedSystem: () => {
-        const { savedSystem } = get();
-        if (savedSystem) set({ cart: savedSystem });
-      },
+      hasSavedSystem: () => get().savedSystem !== null,
     }),
     {
-      name: 'wyze-bundle-storage', // localStorage key
+      name: "wyze-bundle-storage",
+      // Persist everything — cart, variants, and saved snapshot
       partialize: (state) => ({
         cart: state.cart,
         activeVariants: state.activeVariants,
         savedSystem: state.savedSystem,
+        activeStep: state.activeStep,
       }),
-    }
-  )
+    },
+  ),
 );
 
-// ─── Derived selectors (used in components) ──────────────────────────────────
+// ─── Derived selectors ────────────────────────────────────────────────────────
 
-/** Get the current quantity for a specific product+variant combo */
-export function getQuantity(cart: CartMap, productId: string, variantId?: string): number {
-  return cart[cartKey(productId, variantId)]?.quantity ?? 0;
+export function getQuantity(
+  cart: CartMap,
+  productId: string,
+  variantId?: string,
+): number {
+  const key = variantId ? `${productId}__${variantId}` : productId;
+  return cart[key]?.quantity ?? 0;
 }
 
-/** Count distinct products selected in a given category */
 export function getSelectedCount(cart: CartMap, productIds: string[]): number {
   return productIds.filter((id) =>
-    Object.values(cart).some((entry) => entry.productId === id && entry.quantity > 0)
+    Object.values(cart).some(
+      (entry) => entry.productId === id && entry.quantity > 0,
+    ),
   ).length;
 }
 
-/** Total one-time price from cart (excludes monthly plan) */
-export function getCartTotal(cart: CartMap, products: { id: string; price: number; compareAtPrice?: number | null; category: string }[]): {
-  total: number;
-  compareAtTotal: number;
-} {
+export function getCartTotal(
+  cart: CartMap,
+  products: {
+    id: string;
+    price: number;
+    compareAtPrice?: number | null;
+    category: string;
+  }[],
+): { total: number; compareAtTotal: number } {
   let total = 0;
   let compareAtTotal = 0;
 
   for (const entry of Object.values(cart)) {
     if (entry.quantity === 0) continue;
     const product = products.find((p) => p.id === entry.productId);
-    if (!product || product.category === 'shipping') continue;
+    if (!product || product.category === "shipping") continue;
     total += product.price * entry.quantity;
-    compareAtTotal += (product.compareAtPrice ?? product.price) * entry.quantity;
+    compareAtTotal +=
+      (product.compareAtPrice ?? product.price) * entry.quantity;
   }
 
   return { total, compareAtTotal };
