@@ -1,0 +1,155 @@
+/* ── Step wrapper ── */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px 0 0;
+  gap: 5px;
+  background: transparent;
+}
+
+.stepOpen {
+  background: #edf4ff;
+}
+
+/* ── "STEP X OF 4" label row ── */
+.stepLabelRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.stepLabel {
+  flex: 1;
+  margin: 0;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #484848;
+  line-height: 100%;
+}
+
+/* ── Header row ── */
+.header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px 15px;
+  gap: 3px;
+  width: 100%;
+  border-top: 0.5px solid #1f1f1f;
+  border-bottom: 0.5px solid #1f1f1f;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.stepOpen .header {
+  border-color: transparent;
+}
+
+.header:focus-visible {
+  outline: 2px solid #4e2fd2;
+  outline-offset: -2px;
+}
+
+/* inner layout of header */
+.headerInner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3px;
+  width: 100%;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0b0d10;
+  line-height: 100%;
+  white-space: nowrap;
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.selectedBadge {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4e2fd2;
+  line-height: 16px;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+}
+
+/* ── Expanded content ── */
+.content {
+  width: 100%;
+  padding: 0 15px 20px;
+  box-sizing: border-box;
+}
+
+/* ── Next button ── */
+.nextRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.nextButton {
+  padding: 11px 36px;
+  border: 1.5px solid #4e2fd2;
+  border-radius: 8px;
+  background: transparent;
+  color: #4e2fd2;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  letter-spacing: 0.01em;
+}
+
+.nextButton:hover {
+  background: #4e2fd2;
+  color: #ffffff;
+}
+
+.nextButton:focus-visible {
+  outline: 2px solid #4e2fd2;
+  outline-offset: 2px;
+}
