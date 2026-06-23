@@ -125,8 +125,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 0 1px #e8edf2;
 }
-
+.thumbIcon2 {
+  width: 41px;
+  height: 41px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: -18px;
+}
 /* name */
 .itemName {
   flex: 1;
