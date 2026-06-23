@@ -1,4 +1,5 @@
 import { AccordionStep } from "./AccordionStep";
+import { ProductGrid } from "../cards/ProductGrid";
 import { useBundleStore, getSelectedCount } from "../../store/bundleStore";
 import data from "../../data/products.json";
 import type { Product } from "../../types";
@@ -22,7 +23,7 @@ export function BuilderPanel() {
       <div className={styles.steps}>
         {data.steps.map((step, index) => {
           const stepProducts = products.filter(
-            (p) => p.category === step.productCategory,
+            (p) => p.category === step.productCategory && !p.preSeeded,
           );
           const productIds = stepProducts.map((p) => p.id);
           const selectedCount = getSelectedCount(cart, productIds);
@@ -43,9 +44,7 @@ export function BuilderPanel() {
               onNext={!isLast ? () => setActiveStep(step.id + 1) : undefined}
               nextLabel={stepNextLabels[step.id]}
             >
-              <div className={styles.placeholder}>
-                Products will render here in Step 3
-              </div>
+              <ProductGrid products={stepProducts} />
             </AccordionStep>
           );
         })}

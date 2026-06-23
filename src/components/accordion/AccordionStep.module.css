@@ -3,13 +3,15 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 5px 0 0;
-  gap: 5px;
+  padding: 0;
   background: transparent;
+  width: 100%;
 }
 
 .stepOpen {
   background: #edf4ff;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 /* ── "STEP X OF 4" label row ── */
@@ -18,7 +20,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0 15px;
+  padding: 12px 15px 6px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -45,13 +47,15 @@
   width: 100%;
   border-top: 0.5px solid #1f1f1f;
   border-bottom: 0.5px solid #1f1f1f;
+  border-left: none;
+  border-right: none;
   background: none;
   cursor: pointer;
   text-align: left;
 }
 
 .stepOpen .header {
-  border-color: transparent;
+  border-bottom-color: transparent;
 }
 
 .header:focus-visible {
@@ -59,7 +63,7 @@
   outline-offset: -2px;
 }
 
-/* inner layout of header */
+/* ── Inner header layout ── */
 .headerInner {
   display: flex;
   flex-direction: row;
@@ -85,11 +89,10 @@
 }
 
 .title {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   color: #0b0d10;
   line-height: 100%;
-  white-space: nowrap;
 }
 
 .headerRight {
@@ -118,30 +121,37 @@
 /* ── Expanded content ── */
 .content {
   width: 100%;
-  padding: 0 15px 20px;
+  padding: 15px 15px 20px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 /* ── Next button ── */
 .nextRow {
   display: flex;
   justify-content: center;
-  margin-top: 24px;
+  padding-top: 4px;
 }
 
 .nextButton {
-  padding: 11px 36px;
-  border: 1.5px solid #4e2fd2;
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 24px;
+  border: 1px solid #4e2fd2;
+  border-radius: 7px;
   background: transparent;
   color: #4e2fd2;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   transition:
     background 0.15s,
     color 0.15s;
-  letter-spacing: 0.01em;
+  min-height: 39px;
+  white-space: nowrap;
 }
 
 .nextButton:hover {

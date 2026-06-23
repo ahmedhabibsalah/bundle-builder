@@ -1,0 +1,194 @@
+/* ── Card wrapper ── */
+.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 11px;
+  gap: 13px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  position: relative;
+  transition: border-color 0.15s;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.cardSelected {
+  border: 2px solid rgba(78, 47, 210, 0.7);
+}
+
+/* ── Image area ── */
+.imageWrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 101px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  border-radius: 5px;
+  align-self: stretch;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-height: 137px;
+  object-fit: contain;
+  border-radius: 5px;
+  display: block;
+}
+
+/* ── Badge ── */
+.badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  background: #4e2fd2;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  line-height: 15px;
+  z-index: 1;
+}
+
+/* ── Content column ── */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Info block ── */
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f1f1f;
+  letter-spacing: 0.6px;
+  line-height: 100%;
+}
+
+.description {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(31, 31, 31, 0.75);
+  letter-spacing: 0.6px;
+  line-height: 130%;
+}
+
+.learnMore {
+  color: #4e2fd2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.learnMore:hover {
+  text-decoration: underline;
+}
+
+/* ── Variant chips ── */
+.variants {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.variantChip {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1px 5px;
+  gap: 4px;
+  height: 26px;
+  background: #ffffff;
+  border: 0.5px solid #cccccc;
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    border-color 0.1s,
+    background 0.1s;
+}
+
+.variantChipActive {
+  background: rgba(29, 240, 187, 0.04);
+  border: 0.5px solid #0aa288 !important;
+}
+
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.variantLabel {
+  font-size: 10px;
+  font-weight: 500;
+  color: #1f1f1f;
+  letter-spacing: 0.6px;
+  line-height: 100%;
+  white-space: nowrap;
+}
+
+/* ── Footer: stepper + price ── */
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
+}
+
+.pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+  flex: 1;
+}
+
+.compareAt {
+  font-size: 16px;
+  font-weight: 400;
+  color: #d8392b;
+  text-decoration: line-through;
+  letter-spacing: 0.6px;
+  line-height: 100%;
+  text-align: right;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 400;
+  color: #575757;
+  letter-spacing: 0.6px;
+  line-height: 100%;
+  text-align: right;
+}
