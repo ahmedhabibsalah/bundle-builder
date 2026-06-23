@@ -1,4 +1,5 @@
 import { BuilderPanel } from "./components/accordion/BuilderPanel";
+import { ReviewPanel } from "./components/review/ReviewPanel";
 import "./App.css";
 
 function App() {
@@ -8,14 +9,7 @@ function App() {
         <BuilderPanel />
       </main>
       <aside className="review-col">
-        {/* Review panel coming in Step 4 */}
-        <div className="review-placeholder">
-          <p>REVIEW</p>
-          <h2>Your security system</h2>
-          <p style={{ color: "#9499b0", fontSize: 14 }}>
-            Review panel coming in Step 4
-          </p>
-        </div>
+        <ReviewPanel />
       </aside>
     </div>
   );

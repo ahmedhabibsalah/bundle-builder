@@ -42,6 +42,13 @@
   display: block;
 }
 
+.imagePlaceholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  background: #f0f2f8;
+}
+
 /* ── Badge ── */
 .badge {
   position: absolute;

@@ -1,9 +1,29 @@
 {
   "steps": [
-    { "id": 1, "title": "Choose your cameras",    "iconKey": "cameras",    "productCategory": "cameras" },
-    { "id": 2, "title": "Choose your plan",        "iconKey": "plan",       "productCategory": "plan" },
-    { "id": 3, "title": "Choose your sensors",     "iconKey": "sensors",    "productCategory": "sensors" },
-    { "id": 4, "title": "Add extra protection",    "iconKey": "protection", "productCategory": "accessories" }
+    {
+      "id": 1,
+      "title": "Choose your cameras",
+      "iconKey": "cameras",
+      "productCategory": "cameras"
+    },
+    {
+      "id": 2,
+      "title": "Choose your plan",
+      "iconKey": "plan",
+      "productCategory": "plan"
+    },
+    {
+      "id": 3,
+      "title": "Choose your sensors",
+      "iconKey": "sensors",
+      "productCategory": "sensors"
+    },
+    {
+      "id": 4,
+      "title": "Add extra protection",
+      "iconKey": "protection",
+      "productCategory": "accessories"
+    }
   ],
   "products": [
     {
@@ -11,14 +31,14 @@
       "name": "Wyze Cam v4",
       "description": "The clearest Wyze Cam ever made.",
       "learnMoreUrl": "#",
-      "image": "/images/wyze-cam-v4.png",
+      "image": "/cam1.jpg",
       "badge": "Save 22%",
       "compareAtPrice": 35.98,
       "price": 27.98,
       "category": "cameras",
       "variants": [
         { "id": "white", "label": "White", "swatchColor": "#FFFFFF" },
-        { "id": "grey",  "label": "Grey",  "swatchColor": "#9E9E9E" },
+        { "id": "grey", "label": "Grey", "swatchColor": "#9E9E9E" },
         { "id": "black", "label": "Black", "swatchColor": "#212121" }
       ]
     },
@@ -27,7 +47,7 @@
       "name": "Wyze Cam Pan v3",
       "description": "360° pan and 180° tilt security camera.",
       "learnMoreUrl": "#",
-      "image": "/images/wyze-cam-pan-v3.png",
+      "image": "/cam2.png",
       "badge": "Save 12%",
       "compareAtPrice": 39.98,
       "price": 34.98,
@@ -42,7 +62,7 @@
       "name": "Wyze Cam Floodlight v2",
       "description": "2K floodlight camera with a 160° wide-angle view for your garage.",
       "learnMoreUrl": "#",
-      "image": "/images/wyze-cam-floodlight-v2.png",
+      "image": "/cam3.png",
       "badge": "Save 22%",
       "compareAtPrice": 89.98,
       "price": 69.98,
@@ -57,7 +77,7 @@
       "name": "Wyze Duo Cam Doorbell",
       "description": "Two cameras. Two views. Double the porch protection.",
       "learnMoreUrl": "#",
-      "image": "/images/wyze-duo-cam-doorbell.png",
+      "image": "/cam4.png",
       "badge": null,
       "compareAtPrice": null,
       "price": 69.98,
@@ -68,7 +88,7 @@
       "name": "Wyze Battery Cam Pro",
       "description": "Protect anywhere. See everything in 2.5K HDR. No power outlet or electrician needed.",
       "learnMoreUrl": "#",
-      "image": "/images/wyze-battery-cam-pro.png",
+      "image": "/cam5.png",
       "badge": null,
       "compareAtPrice": null,
       "price": 89.98,
@@ -79,21 +99,69 @@
       ]
     },
     {
+      "id": "cam-unlimited-plan",
+      "name": "Cam Unlimited",
+      "description": "Unlimited cameras, 14-day cloud storage, and person/vehicle/pet detection.",
+      "learnMoreUrl": "#",
+      "image": null,
+      "badge": "Best Value",
+      "compareAtPrice": 12.99,
+      "price": 9.99,
+      "priceLabel": "/mo",
+      "category": "plan"
+    },
+    {
+      "id": "cam-plus-plan",
+      "name": "Cam Plus",
+      "description": "Advanced AI detection, unlimited cloud storage for full-length video.",
+      "learnMoreUrl": "#",
+      "image": null,
+      "badge": null,
+      "compareAtPrice": null,
+      "price": 1.99,
+      "priceLabel": "/mo",
+      "category": "plan"
+    },
+    {
+      "id": "cam-plus-lite-plan",
+      "name": "Cam Plus Lite",
+      "description": "Basic motion detection with 12-second cloud clips. Pay what you want.",
+      "learnMoreUrl": "#",
+      "image": null,
+      "badge": null,
+      "compareAtPrice": null,
+      "price": 0,
+      "priceLabel": "/mo",
+      "category": "plan"
+    },
+    {
       "id": "wyze-sense-motion-sensor",
       "name": "Wyze Sense Motion Sensor",
-      "description": null,
-      "image": "/images/wyze-sense-motion-sensor.png",
+      "description": "Detects motion up to 26 feet away with a 120° field of view.",
+      "learnMoreUrl": "#",
+      "image": "/sensor1.jpg",
       "badge": null,
       "compareAtPrice": null,
       "price": 29.99,
-      "category": "sensors",
-      "preSeeded": true
+      "category": "sensors"
+    },
+    {
+      "id": "wyze-sense-contact-sensor",
+      "name": "Wyze Sense Contact Sensor",
+      "description": "Know instantly when doors or windows open or close.",
+      "learnMoreUrl": "#",
+      "image": "/sensor2.jpg",
+      "badge": null,
+      "compareAtPrice": null,
+      "price": 29.99,
+      "category": "sensors"
     },
     {
       "id": "wyze-sense-hub",
       "name": "Wyze Sense Hub (Required)",
-      "description": null,
-      "image": "/images/wyze-sense-hub.png",
+      "description": "The brain of your Wyze security system.",
+      "learnMoreUrl": "#",
+      "image": "/sensor1.jpg",
       "badge": null,
       "compareAtPrice": 29.92,
       "price": 0,
@@ -103,31 +171,41 @@
     {
       "id": "wyze-microsd-card-256gb",
       "name": "Wyze MicroSD Card (256GB)",
-      "description": null,
-      "image": "/images/wyze-microsd-card.png",
+      "description": "Store more footage locally with high-speed Class 10 storage.",
+      "learnMoreUrl": "#",
+      "image": "/cam1.jpg",
       "badge": null,
       "compareAtPrice": null,
       "price": 20.98,
-      "category": "accessories",
-      "preSeeded": true
+      "category": "accessories"
     },
     {
-      "id": "cam-unlimited-plan",
-      "name": "Cam Unlimited",
-      "description": null,
-      "image": "/images/wyze-logo-shield.png",
+      "id": "wyze-keypad",
+      "name": "Wyze Sense Keypad",
+      "description": "Arm and disarm your Wyze Home Monitoring system with a PIN.",
+      "learnMoreUrl": "#",
+      "image": "/sensor2.jpg",
       "badge": null,
-      "compareAtPrice": 12.99,
-      "price": 9.99,
-      "priceLabel": "/mo",
-      "category": "plan",
-      "preSeeded": true
+      "compareAtPrice": null,
+      "price": 29.99,
+      "category": "accessories"
+    },
+    {
+      "id": "wyze-siren",
+      "name": "Wyze Sense Siren",
+      "description": "A loud 95dB siren to deter intruders and alert your household.",
+      "learnMoreUrl": "#",
+      "image": "/sensor1.jpg",
+      "badge": "Save 15%",
+      "compareAtPrice": 19.99,
+      "price": 16.99,
+      "category": "accessories"
     },
     {
       "id": "fast-shipping",
       "name": "Fast Shipping",
       "description": null,
-      "image": "/images/fast-shipping.png",
+      "image": null,
       "badge": null,
       "compareAtPrice": 5.99,
       "price": 0,
@@ -136,17 +214,31 @@
     }
   ],
   "initialCart": {
-    "wyze-cam-v4__white":      { "productId": "wyze-cam-v4",      "variantId": "white", "quantity": 1 },
-    "wyze-cam-pan-v3__black":  { "productId": "wyze-cam-pan-v3",  "variantId": "black", "quantity": 2 },
-    "wyze-sense-motion-sensor": { "productId": "wyze-sense-motion-sensor", "quantity": 2 },
-    "wyze-sense-hub":           { "productId": "wyze-sense-hub",           "quantity": 1 },
-    "wyze-microsd-card-256gb":  { "productId": "wyze-microsd-card-256gb",  "quantity": 2 },
-    "cam-unlimited-plan":       { "productId": "cam-unlimited-plan",       "quantity": 1 },
-    "fast-shipping":            { "productId": "fast-shipping",            "quantity": 1 }
+    "wyze-cam-v4__white": {
+      "productId": "wyze-cam-v4",
+      "variantId": "white",
+      "quantity": 1
+    },
+    "wyze-cam-pan-v3__black": {
+      "productId": "wyze-cam-pan-v3",
+      "variantId": "black",
+      "quantity": 2
+    },
+    "wyze-sense-motion-sensor": {
+      "productId": "wyze-sense-motion-sensor",
+      "quantity": 2
+    },
+    "wyze-sense-hub": { "productId": "wyze-sense-hub", "quantity": 1 },
+    "wyze-microsd-card-256gb": {
+      "productId": "wyze-microsd-card-256gb",
+      "quantity": 2
+    },
+    "cam-unlimited-plan": { "productId": "cam-unlimited-plan", "quantity": 1 },
+    "fast-shipping": { "productId": "fast-shipping", "quantity": 1 }
   },
   "initialActiveVariants": {
-    "wyze-cam-v4":          "white",
-    "wyze-cam-pan-v3":      "black",
+    "wyze-cam-v4": "white",
+    "wyze-cam-pan-v3": "black",
     "wyze-cam-floodlight-v2": "white",
     "wyze-battery-cam-pro": "white"
   }

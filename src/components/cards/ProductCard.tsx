@@ -25,14 +25,18 @@ export function ProductCard({
     <div className={`${styles.card} ${isSelected ? styles.cardSelected : ""}`}>
       {/* ── Image + badge ── */}
       <div className={styles.imageWrap}>
-        <img
-          src={product.image}
-          alt={product.name}
-          className={styles.image}
-          onError={(e) => {
-            (e.target as HTMLImageElement).style.opacity = "0";
-          }}
-        />
+        {product.image ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            className={styles.image}
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.opacity = "0.1";
+            }}
+          />
+        ) : (
+          <div className={styles.imagePlaceholder} />
+        )}
         {product.badge && <span className={styles.badge}>{product.badge}</span>}
       </div>
 

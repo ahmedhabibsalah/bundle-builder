@@ -1,7 +1,7 @@
 // ─── Variant ────────────────────────────────────────────────────────────────
 export interface Variant {
-  id: string;          // e.g. "white" | "black" | "grey"
-  label: string;       // display label
+  id: string; // e.g. "white" | "black" | "grey"
+  label: string; // display label
   swatchColor?: string; // hex or css color for the swatch circle
   swatchImage?: string; // optional image override per variant
 }
@@ -12,27 +12,27 @@ export interface Product {
   name: string;
   description?: string;
   learnMoreUrl?: string;
-  image: string;             // path or URL
-  badge?: string;            // e.g. "Save 22%"
-  compareAtPrice?: number;   // struck-through price
-  price: number;             // active price
-  priceLabel?: string;       // e.g. "/mo" for plans
-  variants?: Variant[];      // if absent → no color selector
+  image: string | null; // path or URL (null for icon-only items)
+  badge?: string; // e.g. "Save 22%"
+  compareAtPrice?: number; // struck-through price
+  price: number; // active price
+  priceLabel?: string; // e.g. "/mo" for plans
+  variants?: Variant[]; // if absent → no color selector
   /** Is this item pre-seeded in the review (sensor/plan/accessory), not addable by the user in this view */
   preSeeded?: boolean;
   /** Category this product belongs to */
-  category: 'cameras' | 'sensors' | 'accessories' | 'plan' | 'shipping';
+  category: "cameras" | "sensors" | "accessories" | "plan" | "shipping";
 }
 
 // ─── Step ────────────────────────────────────────────────────────────────────
 export interface Step {
-  id: number;           // 1-4
+  id: number; // 1-4
   title: string;
   iconKey: StepIconKey;
-  productCategory: Product['category'];
+  productCategory: Product["category"];
 }
 
-export type StepIconKey = 'cameras' | 'plan' | 'sensors' | 'protection';
+export type StepIconKey = "cameras" | "plan" | "sensors" | "protection";
 
 // ─── Cart / Selection state ───────────────────────────────────────────────────
 /**
@@ -43,7 +43,7 @@ export type CartKey = string;
 
 export interface CartEntry {
   productId: string;
-  variantId?: string;   // undefined for variant-less products
+  variantId?: string; // undefined for variant-less products
   quantity: number;
 }
 
